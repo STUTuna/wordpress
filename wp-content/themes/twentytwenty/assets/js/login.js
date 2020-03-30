@@ -3,13 +3,11 @@ $(document).ready(function (params) {
     $('#article_login').show();
     $('#article_signup').hide();
     $(document).on('click', '#show_signup', function () {
-        console.log('111');
         $('#article_login').hide();
         $('#article_signup').show();
     });
 
     $(document).on('click','#show_login',function () {
-        console.log('222');
         $('#article_login').show();
         $('#article_signup').hide();
     });
@@ -17,7 +15,13 @@ $(document).ready(function (params) {
     //註冊功能
     $(document).on('click','#btn_signup',function () {
         console.log('btn_signup');
+        let user_email = $('input[name="signup_user_email"]').val();
+        let user_password = $('input[name="signup_user_password"]').val();
 
+        // console.log(user_email);
+        // console.log(user_password);
+
+        
         $.ajax({
             type: "post",
             url: "/process/wp-content/themes/twentytwenty/process.php",
@@ -28,9 +32,8 @@ $(document).ready(function (params) {
             },
             dataType: "html",
             success: function (response) {
-
+                console.log('signup:response:'+response);
             }
         });
     });
-
 });

@@ -22,15 +22,16 @@ get_header();
 				case 18://訂餐主畫面
 				break;
 				default:
-					//TODO page.php default of switch還沒做到這
+					if ( have_posts() ) {
+						while ( have_posts() ) {
+							the_post();
+							get_template_part( 'template-parts/content', get_post_type() );
+						}
+					}
 			}
 		}else{
-			if ( have_posts() ) {
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( 'template-parts/content', get_post_type() );
-				}
-			}
+			readfile(__DIR__ . '/html_page/login.html');
+
 		}
 
 
